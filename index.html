@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent {
+            width: 100px;
+            height: 100px;
+            background: black;
+            position: relative;
+            left: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .parent:hover .son {
+            left: -100px;
+        }
+
+
+        .son {
+            display: flex;
+            position: absolute;
+            transition: all 1s ease;
+        }
+
+        .num1 {
+            width: 100px;
+            height: 20px;
+            color: #fff;
+            background: red;
+        }
+
+        .num2 {
+            width: 100px;
+            height: 20px;
+            color: #ffffff;
+            background: blue;
+        }
+
+        /*图片旋转*/
+        .rotate-box {
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+            border: 1px solid pink;
+            overflow: hidden;
+        }
+
+        .rotate-box::before {
+            content: "我的";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: red;
+            color: #ffffff;
+            transform: rotate(180deg);
+            transform-origin: left bottom;
+            transition: all .4s;
+        }
+
+        .rotate-box:hover::before {
+            transform: rotate(0deg);
+        }
+
+        /*    图片缩放*/
+        .rotate-box2 {
+            width: 400px;
+            overflow: hidden;
+            background: red;
+            border: 10px solid pink;
+        }
+
+        .rotate-box2 img {
+            width: 400px;
+            transition: all .4s;
+            vertical-align: middle;
+        }
+
+        .rotate-box2 img:hover {
+            transform: scale(1.2);
+        }
+
+        /*    动画*/
+        .keyframes {
+            width: 500px;
+            height: 500px;
+            background: red;
+            animation: move 2s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0px);
+            }
+            100% {
+                transform: translateX(1000px);
+            }
+        }
+
+        /*    地图*/
+        .map {
+            width: 500px;
+            height: 375px;
+            background: url("images/chinese-map.jpg") no-repeat;
+            position: relative;
+        }
+
+        .name {
+            position: absolute;
+            top: 200px;
+            left: 360px;
+            color: #ffffff;
+        }
+
+        .city {
+            position: absolute;
+            top: 200px;
+            left: 350px;
+            color: #ffffff;
+        }
+
+        .dotted {
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+
+        .city div[class^="pulse"] {
+            /*保证小波纹在父盒子里面水平垂直居中，放大以后就会在四周发散*/
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulse 1.2s linear infinite;
+        }
+
+        .city div.pulse2{
+            animation-delay: 0.4s;
+        }
+        .city div.pulse3{
+            animation-delay: 0.8s;
+        }
+
+        @keyframes pulse {
+            0% {
+
+            }
+            70% {
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+            }
+            100% {
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="parent">
+    <div class="son">
+        <div class="num1">我</div>
+        <div class="num2">你</div>
+    </div>
+</div>
+
+
+<div class="rotate-box"></div>
+<div class="rotate-box2">
+    <img src="images/1.jpg" alt="">
+</div>
+
+<div class="keyframes"></div>
+
+<div class="map">
+    <div class="name">安徽</div>
+    <div class="city">
+        <div class="dotted"></div>
+        <div class="pulse1"></div>
+        <div class="pulse2"></div>
+        <div class="pulse3"></div>
+    </div>
+</div>
+</body>
+</html>

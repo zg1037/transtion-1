@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        body {
+           background: #999;
+            border: none;
+        }
+        /*    山*/
+        .slideshow {
+            width: 100%;
+            position: absolute;
+            height: 336px;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .images {
+            background: url("images/bg1.png");
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 336px;
+            width: 500%;
+            animation: slideshow 60s linear infinite;
+            -webkit-animation: slideshow 120s linear infinite;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        @keyframes slideshow {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-66%);
+            }
+        }
+
+        /*熊*/
+
+        .bear {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            bottom: 30px;
+            background: url("images/bear.png") no-repeat;
+            /*添加多个动画*/
+            animation: bearRun 1s steps(8) infinite, move 3s forwards;
+        }
+
+        @keyframes bearRun {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -1600px 0;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="slideshow">
+    <div class="images">
+    </div>
+</div>
+
+<div class="bear"></div>
+
+
+</body>
+</html>
